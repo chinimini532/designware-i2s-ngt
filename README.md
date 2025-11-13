@@ -76,8 +76,8 @@ A simple out-of-tree build flow (example) will be documented later in docs/.
 compatible = "netgenetech,dw-i2s-ngt";
 ```
 ## License
-The original DesignWare I²S and PCM code is licensed under the GNU General
-Public License version 2 (GPLv2), and this modified version remains under the
+The original DesignWare I²S and PCM code is licensed under the **GNU General
+Public License version 2 (GPLv2)**, and this modified version remains under the
 same license.
 
 ---
