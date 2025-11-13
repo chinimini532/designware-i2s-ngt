@@ -24,24 +24,66 @@ dts/    - device-tree snippets / overlays for the I²S block (to be added)
 docs/   - design notes, register info, and test documentation (to be added)
 logs/   - dmesg traces, register dumps, and poller output (to be added)
 
----
+```
 
 ## High-Level Overview
 
 This driver is based on the upstream ALSA SoC Synopsys DesignWare I²S driver and
 extended with:
 
-An optional poller mode using hrtimer to periodically check and service
+-An optional poller mode using hrtimer to periodically check and service
 TX/RX FIFOs
 
-FIFO logging to observe TX and RX samples and ISR flags for debugging
+-FIFO logging to observe TX and RX samples and ISR flags for debugging
 
-Optional RX→TX loopback to test the I²S path without external audio sources
+-Optional RX→TX loopback to test the I²S path without external audio sources
 
-RP1-specific configuration for DMA/register mappings on CM5
+-RP1-specific configuration for DMA/register mappings on CM5
 
 The intention is to make it easier to bring up and debug I²S on CM5 with RP1,
 especially when normal DMA/interrupt-driven audio paths are not fully stable yet.
+
+---
+
+## Build Notes
+
+This driver was built as a kernel module for Raspberry Pi CM5.
+
+It can be built in two ways:
+
+-Natively on the CM5 (recommended for simplicity), or
+
+-With a cross-compiler targeting the CM5 kernel
+
+This repository does not try to document the full cross-compilation or CM5
+kernel environment. For that, a separate CM5 setup / environment repo can be used.
+
+Here, the focus is only on:
+
+-The modified I²S driver
+
+-The associated DTS snippets
+
+-The logs and notes from bring-up
+
+A simple out-of-tree build flow (example) will be documented later in docs/.
+
+---
+
+## Device Tree (DTS)
+
+```text
+compatible = "netgenetech,dw-i2s-ngt";
+```
+## License
+The original DesignWare I²S and PCM code is licensed under the GNU General
+Public License version 2 (GPLv2), and this modified version remains under the
+same license.
+
+---
+
+
+
 
 
 
