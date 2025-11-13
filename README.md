@@ -24,4 +24,24 @@ dts/    - device-tree snippets / overlays for the I²S block (to be added)
 docs/   - design notes, register info, and test documentation (to be added)
 logs/   - dmesg traces, register dumps, and poller output (to be added)
 
+---
+
+## High-Level Overview
+
+This driver is based on the upstream ALSA SoC Synopsys DesignWare I²S driver and
+extended with:
+
+An optional poller mode using hrtimer to periodically check and service
+TX/RX FIFOs
+
+FIFO logging to observe TX and RX samples and ISR flags for debugging
+
+Optional RX→TX loopback to test the I²S path without external audio sources
+
+RP1-specific configuration for DMA/register mappings on CM5
+
+The intention is to make it easier to bring up and debug I²S on CM5 with RP1,
+especially when normal DMA/interrupt-driven audio paths are not fully stable yet.
+
+
 
